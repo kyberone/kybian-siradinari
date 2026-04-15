@@ -1,0 +1,118 @@
+.sira-container {
+  min-height: 100vh;
+  padding: 40px 20px;
+}
+
+.sira-header {
+  text-align: center;
+  margin-bottom: 80px;
+}
+
+.sira-header h1 {
+  font-size: 4rem;
+  letter-spacing: 12px;
+}
+
+.sira-header p {
+  font-size: 0.9rem;
+  opacity: 0.6;
+  letter-spacing: 4px;
+}
+
+.hero-section {
+  max-width: 1000px;
+  margin: 0 auto 120px;
+  position: relative;
+}
+
+.hero-img-wrap {
+  width: 100%;
+  height: 500px;
+  overflow: hidden;
+  border-radius: 4px;
+  margin-bottom: -100px;
+}
+
+.hero-img-wrap img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  filter: sepia(0.5) contrast(1.1);
+}
+
+.img-overlay {
+  position: absolute;
+  top: 0; left: 0; width: 100%; height: 100%;
+  background: linear-gradient(to bottom, transparent 60%, var(--sira-bg));
+}
+
+.hero-content {
+  max-width: 700px;
+  margin: 0 auto;
+  text-align: center;
+}
+
+.features-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 40px;
+  max-width: 1200px;
+  margin: 0 auto 120px;
+}
+
+.feature-card {
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 20px;
+}
+
+.artifact-display {
+  max-width: 800px;
+  margin: 0 auto 80px;
+  text-align: center;
+}
+
+.status-tag {
+  display: inline-block;
+  margin-top: 20px;
+  padding: 5px 15px;
+  border: 1px dashed var(--sira-gold);
+  font-size: 0.7rem;
+  font-weight: bold;
+}
+
+.sira-footer {
+  text-align: center;
+  padding: 80px 0;
+  border-top: 1px solid rgba(212, 175, 55, 0.2);
+}
+
+.footer-links {
+  display: flex;
+  justify-content: center;
+  gap: 30px;
+  margin-bottom: 30px;
+}
+
+.footer-links a {
+  color: var(--sira-paper);
+  text-decoration: none;
+  font-size: 0.8rem;
+  letter-spacing: 2px;
+}
+
+.footer-links a:hover {
+  color: var(--sira-gold);
+}
+
+.text-center { text-align: center; }
+.flex-center { display: flex; justify-content: center; }
+.mt-20 { margin-top: 20px; }
+.sira-gold { color: var(--sira-gold); }
+
+@media (max-width: 768px) {
+  .sira-header h1 { font-size: 2.5rem; }
+  .parchment { padding: 30px; }
+}

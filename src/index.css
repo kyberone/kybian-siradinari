@@ -1,0 +1,57 @@
+:root {
+  --sira-gold: #d4af37;
+  --sira-amber: #ffbf00;
+  --sira-bg: #1a1a1a;
+  --sira-paper: #f4ecd8;
+  --sira-text: #2c2416;
+  --font-serif: 'Spectral', 'Georgia', serif;
+}
+
+* { box-sizing: border-box; margin: 0; padding: 0; }
+
+body {
+  background-color: var(--sira-bg);
+  color: var(--sira-paper);
+  font-family: var(--font-serif);
+  line-height: 1.8;
+}
+
+.parchment {
+  background: var(--sira-paper);
+  color: var(--sira-text);
+  padding: 60px;
+  border: 2px solid var(--sira-gold);
+  box-shadow: inset 0 0 50px rgba(0,0,0,0.1), 0 10px 30px rgba(0,0,0,0.5);
+  position: relative;
+}
+
+.parchment::before {
+  content: "";
+  position: absolute;
+  top: 0; left: 0; right: 0; bottom: 0;
+  background-image: url('/images/sira-bg.png');
+  opacity: 0.05;
+  pointer-events: none;
+}
+
+.rune-glow {
+  color: var(--sira-amber);
+  text-shadow: 0 0 8px var(--sira-amber);
+}
+
+.sira-btn {
+  background: var(--sira-text);
+  color: var(--sira-paper);
+  border: 1px solid var(--sira-gold);
+  padding: 10px 25px;
+  font-family: var(--font-serif);
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  cursor: pointer;
+  transition: all 0.3s;
+}
+
+.sira-btn:hover {
+  background: var(--sira-gold);
+  color: var(--sira-text);
+}
