@@ -1,73 +1,20 @@
-# React + TypeScript + Vite
+# SIRA DINARI [The Codex of Echoes]
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+"The Resonance Never Fades."
 
-Currently, two official plugins are available:
+Welcome to the sanctuary of the Sira Dinari. We are the keepers of the eternal fragment and the scholars of the pre-fracture Resonance.
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Oxc](https://oxc.rs)
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/)
+## [ ORDER OVERVIEW ]
+Reclusive and revere, the Sira Dinari study Kybian not as industrial fuel, but as cosmic memory. We trace our descent to the first space-faring civilizations and protect the primordial core from corruption.
 
-## React Compiler
+## [ SANCTUARY TOOLS ]
+- **Rune Decipherer:** Interactive codex for translating ancient galactic runes and hidden meanings.
+- **Resonance Monitoring:** Active tracking of the primordial hum and vibrational harmony.
+- **Hidden Sanctuaries:** Information on the spiritual geometry required to locate our reclusive orders.
+- **Ritual Archives:** Descriptions of Resonance rituals and the history of the Eternal Fragment.
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+## [ ENLIGHTENMENT NOTICE ]
+The Sira Dinari do not seek the stars; we listen to them. Only those whose resonance aligns with the void may access the deepest layers of the Codex.
 
-## Expanding the ESLint configuration
-
-If you are developing a production application, we recommend updating the configuration to enable type-aware lint rules:
-
-```js
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
-
-      // Remove tseslint.configs.recommended and replace with this
-      tseslint.configs.recommendedTypeChecked,
-      // Alternatively, use this for stricter rules
-      tseslint.configs.strictTypeChecked,
-      // Optionally, add this for stylistic rules
-      tseslint.configs.stylisticTypeChecked,
-
-      // Other configs...
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
-```
-
-You can also install [eslint-plugin-react-x](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-x) and [eslint-plugin-react-dom](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-dom) for React-specific lint rules:
-
-```js
-// eslint.config.js
-import reactX from 'eslint-plugin-react-x'
-import reactDom from 'eslint-plugin-react-dom'
-
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
-      // Enable lint rules for React
-      reactX.configs['recommended-typescript'],
-      // Enable lint rules for React DOM
-      reactDom.configs.recommended,
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
-```
+---
+*THE DINARI WILL ENDURE. THE RESONANCE NEVER FADES.*

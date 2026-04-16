@@ -1,6 +1,6 @@
-import React, { useState, useEffect } from 'react';
+import { useState, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
-import { Scroll, Sparkles, BookOpen, Fingerprint, MapPin, Ghost, ChevronRight, Eye } from 'lucide-react';
+import { Sparkles, BookOpen, Fingerprint, Eye } from 'lucide-react';
 import './App.css';
 
 const runes = [
