@@ -1,15 +1,41 @@
-import React from 'react';
-import { motion } from 'framer-motion';
-import { Scroll, Sparkles, BookOpen, Fingerprint, MapPin, Ghost } from 'lucide-react';
+import React, { useState, useEffect } from 'react';
+import { motion, AnimatePresence } from 'framer-motion';
+import { Scroll, Sparkles, BookOpen, Fingerprint, MapPin, Ghost, ChevronRight, Eye } from 'lucide-react';
 import './App.css';
 
+const runes = [
+  { symbol: 'ᚲ', name: 'KYB', meaning: 'The Source of Light' },
+  { symbol: 'ᚠ', name: 'FEHU', meaning: 'The Flow of Energy' },
+  { symbol: 'ᚦ', name: 'THUR', meaning: 'The Fracture Point' },
+  { symbol: 'ᚨ', name: 'ANSU', meaning: 'The Voice of the Deep' },
+  { symbol: 'ᚱ', name: 'RAID', meaning: 'The Veil-Diver Path' },
+];
+
 function App() {
+  const [selectedRune, setSelectedRune] = useState<typeof runes[0] | null>(null);
+  const [resonance, setResonance] = useState(1);
+  const [showCodex, setShowCodex] = useState(false);
+
+  useEffect(() => {
+    const interval = setInterval(() => {
+      setResonance(r => (r === 1 ? 1.05 : 1));
+    }, 2000);
+    return () => clearInterval(interval);
+  }, []);
+
   return (
-    <div className="sira-container">
+    <div className="sira-container" style={{ transform: `scale(${resonance})` }}>
+      <div className="parchment-texture" />
+      <div className="rune-float-bg">
+        {runes.map((r, i) => (
+          <span key={i} className="floating-rune">{r.symbol}</span>
+        ))}
+      </div>
+
       <header className="sira-header">
         <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1 }}>
           <h1 className="rune-glow">SIRA DINARI</h1>
-          <p>GUARDIANS OF THE ETERNAL FRAGMENT</p>
+          <p className="subtitle">GUARDIANS OF THE ETERNAL FRAGMENT</p>
         </motion.div>
       </header>
 
@@ -27,10 +53,46 @@ function App() {
             <h2 className="text-center">The Codex of Echoes</h2>
             <p>We are the keepers of the Deep Lore. Before the Mandate, before the Axium, there was the Resonance. We study the Kybian not as fuel, but as memory.</p>
             <div className="flex-center mt-20">
-              <button className="sira-btn">Decipher Runes</button>
+              <button className="sira-btn" onClick={() => setShowCodex(!showCodex)}>
+                {showCodex ? 'CLOSE CODEX' : 'DECIPHER RUNES'}
+              </button>
             </div>
           </motion.div>
         </section>
+
+        <AnimatePresence>
+          {showCodex && (
+            <motion.section 
+              initial={{ opacity: 0, height: 0 }}
+              animate={{ opacity: 1, height: 'auto' }}
+              exit={{ opacity: 0, height: 0 }}
+              className="rune-grid-section parchment"
+            >
+              <h3>ANCIENT RUNE TRANSLATION</h3>
+              <div className="rune-grid">
+                {runes.map((r, i) => (
+                  <div 
+                    key={i} 
+                    className={`rune-card ${selectedRune?.name === r.name ? 'active' : ''}`}
+                    onClick={() => setSelectedRune(r)}
+                  >
+                    <span className="rune-symbol">{r.symbol}</span>
+                    <span className="rune-name">{r.name}</span>
+                  </div>
+                ))}
+              </div>
+              {selectedRune && (
+                <motion.div 
+                  initial={{ opacity: 0 }}
+                  animate={{ opacity: 1 }}
+                  className="rune-meaning"
+                >
+                  <Eye size={16} /> <strong>{selectedRune.name}:</strong> {selectedRune.meaning}
+                </motion.div>
+              )}
+            </motion.section>
+          )}
+        </AnimatePresence>
 
         <section className="features-grid">
           <div className="parchment feature-card">
@@ -55,7 +117,12 @@ function App() {
              <Fingerprint size={48} className="rune-glow" />
              <h2>THE PRIMORDIAL CORE</h2>
              <p>A fragment of the original Kybian sun. It hums with the voices of a billion years.</p>
-             <div className="status-tag">STATUS: VIBRATING</div>
+             <div className="status-tag">STATUS: VIBRATING [144.2Hz]</div>
+           </div>
+           <div className="resonance-waves">
+              {[...Array(5)].map((_, i) => (
+                <div key={i} className="wave" style={{ animationDelay: `${i * 0.5}s` }} />
+              ))}
            </div>
         </section>
       </main>
@@ -66,10 +133,11 @@ function App() {
            <a href="#rituals">RITUALS</a>
            <a href="#lore">LORE</a>
         </div>
-        <p>THE DINARI WILL ENDURE. THE RESONANCE NEVER FADES.</p>
+        <p className="legal">THE DINARI WILL ENDURE. THE RESONANCE NEVER FADES.</p>
       </footer>
     </div>
   );
 }
 
 export default App;
+

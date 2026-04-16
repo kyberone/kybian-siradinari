@@ -1,63 +1,224 @@
-.sira-container {
-  min-height: 100vh;
-  padding: 40px 20px;
+:root {
+  --sira-gold: #c5a059;
+  --sira-dark: #1a1a1a;
+  --sira-cream: #e8dcc4;
+  --sira-bg: #0d0d0d;
 }
 
+body {
+  margin: 0;
+  background-color: var(--sira-bg);
+  color: var(--sira-cream);
+  font-family: 'Cinzel', serif;
+  overflow-x: hidden;
+  transition: transform 2s ease-in-out;
+}
+
+.sira-container {
+  min-height: 100vh;
+  position: relative;
+}
+
+.parchment-texture {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-image: url("https://www.transparenttextures.com/patterns/parchment.png");
+  opacity: 0.1;
+  pointer-events: none;
+  z-index: 100;
+}
+
+.rune-float-bg {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+  opacity: 0.05;
+  z-index: 0;
+}
+
+.floating-rune {
+  position: absolute;
+  font-size: 5rem;
+  animation: float-rune 20s infinite linear;
+}
+
+.floating-rune:nth-child(1) { top: 10%; left: 10%; }
+.floating-rune:nth-child(2) { top: 30%; right: 10%; animation-delay: -5s; }
+.floating-rune:nth-child(3) { bottom: 20%; left: 15%; animation-delay: -10s; }
+.floating-rune:nth-child(4) { top: 60%; right: 20%; animation-delay: -15s; }
+
+@keyframes float-rune {
+  0% { transform: translateY(0) rotate(0deg); opacity: 0; }
+  20% { opacity: 1; }
+  80% { opacity: 1; }
+  100% { transform: translateY(-100px) rotate(360deg); opacity: 0; }
+}
+
+.parchment {
+  background-color: rgba(232, 220, 196, 0.05);
+  border: 1px solid var(--sira-gold);
+  padding: 40px;
+  position: relative;
+  box-shadow: 0 0 30px rgba(197, 160, 89, 0.1);
+}
+
+.parchment::before {
+  content: '';
+  position: absolute;
+  top: 5px; left: 5px; right: 5px; bottom: 5px;
+  border: 1px solid rgba(197, 160, 89, 0.2);
+  pointer-events: none;
+}
+
+.sira-gold { color: var(--sira-gold); }
+.rune-glow {
+  color: var(--sira-gold);
+  text-shadow: 0 0 15px var(--sira-gold);
+}
+
+/* Header */
 .sira-header {
   text-align: center;
-  margin-bottom: 80px;
+  padding: 80px 20px;
 }
 
 .sira-header h1 {
   font-size: 4rem;
-  letter-spacing: 12px;
+  margin: 0;
+  letter-spacing: 10px;
 }
 
-.sira-header p {
-  font-size: 0.9rem;
+.subtitle {
+  font-size: 0.8rem;
+  letter-spacing: 5px;
   opacity: 0.6;
-  letter-spacing: 4px;
+  margin-top: 10px;
+}
+
+/* Main */
+.sira-main {
+  max-width: 1000px;
+  margin: 0 auto;
+  padding: 20px;
 }
 
 .hero-section {
-  max-width: 1000px;
-  margin: 0 auto 120px;
   position: relative;
+  margin-bottom: 100px;
 }
 
 .hero-img-wrap {
-  width: 100%;
   height: 500px;
   overflow: hidden;
-  border-radius: 4px;
-  margin-bottom: -100px;
+  position: relative;
 }
 
 .hero-img-wrap img {
   width: 100%;
   height: 100%;
   object-fit: cover;
-  filter: sepia(0.5) contrast(1.1);
+  filter: sepia(0.8) brightness(0.6);
 }
 
 .img-overlay {
   position: absolute;
   top: 0; left: 0; width: 100%; height: 100%;
-  background: linear-gradient(to bottom, transparent 60%, var(--sira-bg));
+  background: linear-gradient(to bottom, transparent, var(--sira-bg));
 }
 
 .hero-content {
-  max-width: 700px;
-  margin: 0 auto;
+  margin-top: -100px;
+  z-index: 10;
   text-align: center;
 }
 
+.sira-btn {
+  background: transparent;
+  border: 1px solid var(--sira-gold);
+  color: var(--sira-gold);
+  padding: 12px 30px;
+  font-family: inherit;
+  font-size: 1rem;
+  cursor: pointer;
+  transition: all 0.3s;
+  letter-spacing: 2px;
+}
+
+.sira-btn:hover {
+  background: var(--sira-gold);
+  color: var(--sira-bg);
+  box-shadow: 0 0 20px rgba(197, 160, 89, 0.4);
+}
+
+/* Rune Grid */
+.rune-grid-section {
+  margin: 50px 0;
+}
+
+.rune-grid-section h3 {
+  text-align: center;
+  font-size: 1.2rem;
+  margin-bottom: 30px;
+  letter-spacing: 3px;
+}
+
+.rune-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(100px, 1fr));
+  gap: 20px;
+  justify-items: center;
+}
+
+.rune-card {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 10px;
+  cursor: pointer;
+  padding: 15px;
+  border: 1px solid transparent;
+  transition: all 0.3s;
+}
+
+.rune-card:hover, .rune-card.active {
+  border-color: var(--sira-gold);
+  background: rgba(197, 160, 89, 0.1);
+}
+
+.rune-symbol {
+  font-size: 2.5rem;
+  color: var(--sira-gold);
+}
+
+.rune-name {
+  font-size: 0.7rem;
+  opacity: 0.6;
+}
+
+.rune-meaning {
+  margin-top: 30px;
+  text-align: center;
+  padding: 20px;
+  background: rgba(0, 0, 0, 0.3);
+  font-style: italic;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 15px;
+}
+
+/* Features */
 .features-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-  gap: 40px;
-  max-width: 1200px;
-  margin: 0 auto 120px;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 20px;
+  margin-bottom: 100px;
 }
 
 .feature-card {
@@ -65,54 +226,103 @@
   display: flex;
   flex-direction: column;
   align-items: center;
-  gap: 20px;
+  gap: 15px;
 }
 
+.feature-card h3 {
+  font-size: 1.2rem;
+  margin: 0;
+  letter-spacing: 2px;
+}
+
+.feature-card p {
+  font-size: 0.9rem;
+  opacity: 0.8;
+  line-height: 1.6;
+}
+
+/* Artifact */
 .artifact-display {
-  max-width: 800px;
-  margin: 0 auto 80px;
+  display: grid;
+  grid-template-columns: 1fr;
   text-align: center;
+  margin-bottom: 100px;
+  overflow: hidden;
+}
+
+.artifact-info h2 {
+  font-size: 2rem;
+  margin: 20px 0;
+  letter-spacing: 5px;
 }
 
 .status-tag {
   display: inline-block;
   margin-top: 20px;
   padding: 5px 15px;
-  border: 1px dashed var(--sira-gold);
+  border: 1px solid var(--sira-gold);
   font-size: 0.7rem;
-  font-weight: bold;
+  letter-spacing: 2px;
 }
 
+.resonance-waves {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+}
+
+.wave {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  border: 1px solid var(--sira-gold);
+  border-radius: 50%;
+  animation: wave 4s infinite linear;
+  opacity: 0;
+}
+
+@keyframes wave {
+  0% { width: 0; height: 0; opacity: 0.5; }
+  100% { width: 500px; height: 500px; opacity: 0; }
+}
+
+/* Footer */
 .sira-footer {
   text-align: center;
-  padding: 80px 0;
-  border-top: 1px solid rgba(212, 175, 55, 0.2);
+  padding: 60px 20px;
+  border-top: 1px solid rgba(197, 160, 89, 0.2);
 }
 
 .footer-links {
   display: flex;
   justify-content: center;
-  gap: 30px;
+  gap: 40px;
   margin-bottom: 30px;
 }
 
 .footer-links a {
-  color: var(--sira-paper);
+  color: var(--sira-gold);
   text-decoration: none;
   font-size: 0.8rem;
   letter-spacing: 2px;
 }
 
-.footer-links a:hover {
-  color: var(--sira-gold);
+.legal {
+  font-size: 0.7rem;
+  opacity: 0.5;
+  letter-spacing: 3px;
 }
 
-.text-center { text-align: center; }
 .flex-center { display: flex; justify-content: center; }
 .mt-20 { margin-top: 20px; }
-.sira-gold { color: var(--sira-gold); }
+.text-center { text-align: center; }
 
-@media (max-width: 768px) {
-  .sira-header h1 { font-size: 2.5rem; }
-  .parchment { padding: 30px; }
-}
+/* Scrollbar */
+::-webkit-scrollbar { width: 5px; }
+::-webkit-scrollbar-track { background: var(--sira-bg); }
+::-webkit-scrollbar-thumb { background: var(--sira-gold); }
