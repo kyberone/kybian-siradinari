@@ -322,7 +322,33 @@ body {
 .mt-20 { margin-top: 20px; }
 .text-center { text-align: center; }
 
-/* Scrollbar */
-::-webkit-scrollbar { width: 5px; }
-::-webkit-scrollbar-track { background: var(--sira-bg); }
-::-webkit-scrollbar-thumb { background: var(--sira-gold); }
+/* Responsive */
+@media (max-width: 768px) {
+  .sira-header h1 {
+    font-size: 2rem;
+    letter-spacing: 5px;
+  }
+
+  .hero-img-wrap {
+    height: 300px;
+  }
+
+  .hero-content {
+    padding: 20px;
+    margin-top: -50px;
+  }
+
+  .rune-symbol {
+    font-size: 1.5rem;
+  }
+
+  .features-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .footer-links {
+    flex-direction: column;
+    gap: 20px;
+  }
+}
+
